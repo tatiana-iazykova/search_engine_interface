@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type=text/css 
+        href="{{ url_for('static', filename='styles.css') }}">
+        <meta charset="utf-8">
+        <title>Search engine</title>
+    </head>
+    <body>
+    <div class="result">
+        <form>
+            <input type="text" class="result" name ="q" value="{%- if q -%}{{ q }}{%- endif -%}" size="50">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="result" >Search</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Number of results: <input type="text" name ="k" value="{%- if k -%}{{ k }}{%- endif -%}" maxlength="4" size="2">
+           
+        </form>
+    </div>    
+    <h3> {% if q %} We are looking for &quot;{{ q }}&quot; {% else %}We don't look for anything yet{% endif %} </h3> 
+    <div>    
+        <ol>      
+        {%for el in data%}
+            <li>{{el}}</li>
+        {% endfor %}
+        </ol>
+    </div>
+    </body>
+</html>
